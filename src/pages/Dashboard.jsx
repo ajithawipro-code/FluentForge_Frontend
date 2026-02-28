@@ -41,7 +41,7 @@ export default function Dashboard() {
         {/* Header */}
         <div>
           <h1 className="text-4xl font-serif">
-            Welcome back{" "}
+            Welcome back,{" "}
             <span className="text-primary">
               {user?.name}
             </span>
