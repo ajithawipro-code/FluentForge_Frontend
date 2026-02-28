@@ -3,7 +3,7 @@ import { api } from "../api/axios"
 import { useNavigate } from "react-router-dom"
 
 export default function Modules() {
-  const [modules, setModules] = useState([])
+  const [modules, setModules] = useState(null)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -17,7 +17,30 @@ export default function Modules() {
     }
 
     fetchModules()
-  }, [])
+  }, []);
+//   if (!modules) {
+//   return (
+//     <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
+//       Structuring your learning path... 📘
+//     </div>
+//   )
+// }
+if (!modules) {
+  return (
+    <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
+      <div className="text-center space-y-5">
+
+       <div className="text-5xl text-[#b89b3c] animate-pulse">
+            📘
+        </div>
+
+        <p className="text-xl font-serif">
+          Structuring your learning path...
+        </p>
+      </div>
+    </div>
+  )
+}
 
   return (
     <div className="min-h-screen bg-background text-foreground px-6 py-20">

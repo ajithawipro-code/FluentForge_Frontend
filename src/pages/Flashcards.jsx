@@ -26,13 +26,23 @@ export default function Flashcards() {
     fetchCards()
   }, [lessonId])
 
-  if (loading) {
-    return (
-      <div className="p-10 text-center">
-        Loading flashcards...
+if (loading) {
+  return (
+    <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
+      <div className="text-center space-y-5">
+
+        <div className="text-5xl text-[#b89b3c] animate-pulse">
+          🃏
+        </div>
+
+        <p className="text-xl font-serif">
+          Preparing your flashcard review...
+        </p>
+
       </div>
-    )
-  }
+    </div>
+  )
+}
 
   if (!loading && cards.length === 0) {
     return (

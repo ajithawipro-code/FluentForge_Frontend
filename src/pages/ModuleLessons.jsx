@@ -6,7 +6,7 @@ import toast from "react-hot-toast"
 export default function ModuleLessons() {
   const { moduleId } = useParams()
   const navigate = useNavigate()
-  const [lessons, setLessons] = useState([])
+  const [lessons, setLessons] = useState(null)
 
   useEffect(() => {
     const fetchLessons = async () => {
@@ -24,7 +24,25 @@ export default function ModuleLessons() {
     }
 
     fetchLessons()
-  }, [moduleId, navigate])
+  }, [moduleId, navigate]);
+
+if (!lessons) {
+  return (
+    <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
+      <div className="text-center space-y-5">
+
+        <div className="text-5xl text-[#b89b3c] animate-pulse">
+          🚀
+        </div>
+
+         <p className="text-xl font-serif">
+          Preparing you lesson experience...
+        </p>
+
+      </div>
+    </div>
+  )
+}
 
   return (
     <div className="bg-background min-h-screen px-6 py-20">

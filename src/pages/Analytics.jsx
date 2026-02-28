@@ -51,7 +51,23 @@ export default function Analytics() {
   return "Keep building daily fluency. Small consistent sessions compound over time."
 }
 
-  if (!data) return <div className="p-10">Loading...</div>
+if (!data) {
+  return (
+    <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
+      <div className="text-center space-y-5">
+
+        <div className="text-5xl text-[#b89b3c] animate-pulse">
+          📊
+        </div>
+
+         <p className="text-xl font-serif">
+          Synthesizing performance insights...
+        </p>
+
+      </div>
+    </div>
+  )
+}
 
   return (
     <div className="min-h-screen bg-background text-foreground px-6 py-16">
@@ -83,7 +99,7 @@ export default function Analytics() {
           <div className="bg-card border border-border rounded-2xl p-6">
             <p className="text-sm text-muted-foreground">Total XP</p>
             <p className="text-3xl font-semibold text-[#b89b3c] mt-2">
-              {data.totalXp}
+              {data.totalXp} ⭐
             </p>
           </div>
 
@@ -97,7 +113,7 @@ export default function Analytics() {
           <div className="bg-card border border-border rounded-2xl p-6">
             <p className="text-sm text-muted-foreground">Lessons Completed</p>
             <p className="text-3xl font-semibold text-[#b89b3c] mt-2">
-              {data.lessonsCompleted}
+              {data.lessonsCompleted} 🏆
             </p>
           </div>
 

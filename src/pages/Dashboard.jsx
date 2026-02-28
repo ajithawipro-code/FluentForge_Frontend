@@ -11,8 +11,8 @@ import {
 import { Progress } from "@/components/ui/progress"
 
 export default function Dashboard() {
-  const [modules, setModules] = useState([])
-  const [dashboardData, setDashboardData] = useState(null)
+  const [modules, setModules] = useState(null);
+  const [dashboardData, setDashboardData] = useState(null);
 
   const { user } = useContext(AuthContext)
   const navigate = useNavigate()
@@ -32,7 +32,29 @@ export default function Dashboard() {
     }
 
     fetchData()
-  }, [])
+  }, []);
+
+if (!modules || !dashboardData) {
+  return (
+    <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
+      <div className="text-center space-y-5">
+         <div className="text-5xl text-[#b89b3c] animate-pulse">
+          📈
+        </div>
+
+
+        <p className="text-xl font-serif">
+          Compiling your learning dashboard...
+        </p>
+
+        {/* <p className="text-sm text-muted-foreground">
+          Excellence is being prepared.
+        </p> */}
+
+      </div>
+    </div>
+  )
+}
 
   return (
     <div className="min-h-screen px-6 py-12 bg-background text-foreground">

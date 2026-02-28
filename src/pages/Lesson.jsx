@@ -41,6 +41,24 @@ export default function Lesson() {
     }
   }
 
+  if (!lesson) {
+  return (
+    <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
+      <div className="text-center space-y-5">
+
+        <div className="text-5xl text-[#b89b3c] animate-pulse">
+           📚
+        </div>
+
+         <p className="text-xl font-serif">
+           Assembling your lesson content...
+        </p>
+
+      </div>
+    </div>
+  )
+}
+
   const goToNextLesson = async () => {
     try {
       const res = await api.get(`/learning/lessons/${lesson.module_id}`)
