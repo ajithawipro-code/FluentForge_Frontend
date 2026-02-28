@@ -9,6 +9,7 @@ export default function Flashcards() {
   const [cards, setCards] = useState([])
   const [currentIndex, setCurrentIndex] = useState(0)
   const [flipped, setFlipped] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const fetchCards = async () => {
@@ -17,14 +18,28 @@ export default function Flashcards() {
         setCards(res.data.data || [])
       } catch (err) {
         console.log(err.response?.data || err.message)
+      } finally {
+        setLoading(false)
       }
     }
 
     fetchCards()
   }, [lessonId])
 
-  if (cards.length === 0) {
-    return <div className="p-10 text-center">No flashcards available.</div>
+  if (loading) {
+    return (
+      <div className="p-10 text-center">
+        Loading flashcards...
+      </div>
+    )
+  }
+
+  if (!loading && cards.length === 0) {
+    return (
+      <div className="p-10 text-center">
+        No flashcards available.
+      </div>
+    )
   }
 
   const currentCard = cards[currentIndex]
